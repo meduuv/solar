@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#03040a" />
+<title>THE SOLAR SYSTEM — An Expanding Journey</title>
+<meta name="description" content="A scroll-driven, real-time 3D tour of every planet in the Solar System." />
+<link rel="stylesheet" href="./styles.css" />
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.min.js" } }
+</script>
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div id="loader" aria-live="polite">
+  <div class="ld-inner">
+    <div class="ld-ring"><i></i><i></i><i></i></div>
+    <h1 class="ld-title">THE&nbsp;SOLAR&nbsp;SYSTEM</h1>
+    <p class="ld-sub">forging worlds from noise</p>
+    <div class="ld-bar"><span id="ldFill"></span></div>
+    <p class="ld-step" id="ldStep">booting renderer…</p>
+  </div>
+</div>
+
+<!-- ============ WEBGL ============ -->
+<canvas id="gl"></canvas>
+<div id="vignette" aria-hidden="true"></div>
+<div id="grain" aria-hidden="true"></div>
+
+<!-- ============ FIXED HUD ============ -->
+<div id="progress" aria-hidden="true"><span id="progressFill"></span></div>
+
+<header id="brand">
+  <span class="bd-mark"></span>
+  <span class="bd-txt">SOL&nbsp;·&nbsp;ORBITAL&nbsp;ATLAS</span>
+</header>
+
+<nav id="rail" aria-label="Jump to a world"></nav>
+
+<div id="tooltip" aria-hidden="true"></div>
+
+<div id="hud">
+  <div class="hud-row"><b id="hudName">—</b></div>
+  <div class="hud-row"><span>DIST&nbsp;FROM&nbsp;SOL</span><i id="hudAu">0.00 AU</i></div>
+  <div class="hud-row"><span>ORBITAL&nbsp;V</span><i id="hudVel">0.0 km/s</i></div>
+  <div class="hud-row"><span>LOCAL&nbsp;DAY</span><i id="hudDay">—</i></div>
+  <div class="hud-scale"><span id="hudScale"></span></div>
+</div>
+
+<div id="hint">
+  <span class="hint-key">SCROLL</span> to travel
+  <span class="hint-sep"></span>
+  <span class="hint-key">DRAG</span> to orbit
+  <span class="hint-sep"></span>
+  <span class="hint-key">SHIFT</span>+wheel to zoom
+  <span class="hint-sep"></span>
+  <span class="hint-key">T</span> auto-tour
+</div>
+
+<div id="toolbar">
+  <button id="btnTour" class="tb" title="Cinematic auto-tour (T)">▶ TOUR</button>
+  <button id="btnOrbits" class="tb" title="Toggle orbit lines (O)">ORBITS</button>
+  <button id="btnBloom" class="tb" title="Toggle bloom (B)">BLOOM</button>
+  <button id="btnTrue" class="tb" title="True relative scale (R)">TRUE SCALE</button>
+</div>
+
+<!-- ============ SCROLL NARRATIVE (built by js/ui.js) ============ -->
+<main id="scroll"></main>
+
+<script type="module" src="./js/main.js"></script>
+<noscript><p style="color:#fff;padding:2rem;font:16px system-ui">This experience needs JavaScript and WebGL.</p></noscript>
+</body>
+</html>
